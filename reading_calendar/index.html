@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>読書記録カレンダー</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>📅 <span id="monthLabel"></span></h1>
+    <div class="month-switch">
+      <button id="prevMonth">← 前の月</button>
+      <button id="nextMonth">次の月 →</button>
+    </div>
+  </header>
+  <main>
+    <section class="calendar-page">
+      <div class="calendar-grid" id="calendar"></div>
+    </section>
+    <section class="bookmark-page" style="display:none;">
+      <h2>🔖 しおりページ</h2>
+      <div class="filter-buttons">
+        <button data-filter="all">すべて表示</button>
+        <button data-filter="読了">✅読了だけ</button>
+        <button data-filter="未読">⏳未読だけ</button>
+        <button data-filter="favorite">⭐お気に入りだけ</button>
+        <button data-filter="💘">💘感動だけ</button>
+        <button data-filter="😭">😭泣いただけ</button>
+        <button data-filter="💧">💧悲しいだけ</button>
+        <button data-filter="😲">😲驚いただけ</button>
+        <button data-filter="😴">😴眠いだけ</button>
+      </div>
+      <div id="bookmark-list"></div>
+    </section>
+    <section class="mypage-page" style="display:none;">
+      <h2>📊 スタンプ傾向</h2>
+      <canvas id="stampChart" width="400" height="300"></canvas>
+    </section>
+    <section class="recommend-page" style="display:none;">
+      <h2>📚 おすすめ本ジェネレータ</h2>
+      <textarea id="impression-text" placeholder="感想を入力してください"></textarea>
+      <button id="analyze-btn" class="submit-btn">分析しておすすめ表示</button>
+      <div id="book-card"></div>
+    </section>
+  </main>
+  <div class="modal" id="edit-modal">
+    <div class="modal-content">
+      <button class="close-btn" id="calendar-edit-close">✖️</button>
+      <h2 id="edit-date-title">📘 記録編集</h2>
+      <input type="text" id="calendar-edit-title" placeholder="書名" />
+      <input type="text" id="calendar-edit-author" placeholder="著者" />
+      <textarea id="calendar-edit-impression" placeholder="感想"></textarea>
+      <input type="text" id="calendar-edit-quote" placeholder="お気に入りの一文" />
+      <div class="status-select">
+        <label><input type="radio" name="status" value="読了"> ✅ 読了</label>
+        <label><input type="radio" name="status" value="未読"> ⏳ 未読</label>
+      </div>
+      <div class="favorite-select">
+        <label><input type="checkbox" id="favorite-check"> ⭐お気に入り登録</label>
+      </div>
+      <div id="calendar-edit-stamps">
+        <span class="stamp">💘</span>
+        <span class="stamp">😭</span>
+        <span class="stamp">💧</span>
+        <span class="stamp">😲</span>
+        <span class="stamp">😴</span>
+      </div>
+      <div class="form-buttons">
+        <button class="submit-btn" id="calendar-edit-save">保存</button>
+        <button class="delete-btn" id="calendar-edit-delete">削除</button>
+      </div>
+    </div>
+  </div>
+  <div class="nav">
+    <a href="#" data-target="calendar-page">📅 カレンダー</a>
+    <a href="#" data-target="bookmark-page">🔖 しおり</a>
+    <a href="#" data-target="mypage-page">📊 マイページ</a>
+    <a href="#" data-target="recommend-page">📚 おすすめ</a>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
