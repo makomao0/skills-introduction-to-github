@@ -44,6 +44,19 @@
       <button id="analyze-btn" class="submit-btn">分析しておすすめ表示</button>
       <div id="book-card"></div>
     </section>
+    <section class="omikuji-page" style="display:none;">
+      <h2>🎲 今日の本みくじ</h2>
+      <p>いまの気分を選んでください:</p>
+      <div id="mood-buttons">
+        <button data-mood="癒し">癒し</button>
+        <button data-mood="冒険">冒険</button>
+        <button data-mood="恋愛">恋愛</button>
+        <button data-mood="ミステリー">ミステリー</button>
+        <button data-mood="ファンタジー">ファンタジー</button>
+      </div>
+      <p id="roulette-status"></p>
+      <div id="omikuji-card"></div>
+    </section>
   </main>
   <div class="modal" id="edit-modal">
     <div class="modal-content">
@@ -78,6 +91,7 @@
     <a href="#" data-target="bookmark-page">🔖 しおり</a>
     <a href="#" data-target="mypage-page">📊 マイページ</a>
     <a href="#" data-target="recommend-page">📚 おすすめ</a>
+    <a href="#" data-target="omikuji-page">🎲 みくじ</a>
   </div>
   <script src="script.js"></script>
 </body>

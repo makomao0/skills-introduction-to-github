@@ -180,3 +180,35 @@ document.getElementById('analyze-btn').addEventListener('click',async()=>{
         console.error(err);
     }
 });
+
+// --- book omikuji by mood ---
+const moodKeywords={
+    '癒し':'癒し 小説',
+    '冒険':'冒険 小説',
+    '恋愛':'恋愛 小説',
+    'ミステリー':'ミステリー 小説',
+    'ファンタジー':'ファンタジー 小説'
+};
+
+document.querySelectorAll('#mood-buttons button').forEach(btn=>{
+    btn.addEventListener('click',async()=>{
+        const mood=btn.getAttribute('data-mood');
+        const status=document.getElementById('roulette-status');
+        const card=document.getElementById('omikuji-card');
+        if(!status||!card) return;
+        status.textContent='📚 選書中...';
+        card.innerHTML='';
+        try{
+            const book=await fetchBookByKeyword(moodKeywords[mood]||'小説');
+            status.textContent='🎉 今日のおすすめはこちら！';
+            displayOmikujiCard(book);
+        }catch(err){
+            status.textContent='⚠️ 本が見つかりませんでした';
+        }
+    });
+});
+
+function displayOmikujiCard(book){
+    const html=`<div class="recommend-card"><h3>${book.title}</h3><p><strong>著者:</strong> ${book.authors}</p><p><strong>あらすじ:</strong> ${book.description}</p>${book.thumbnail?`<img src="${book.thumbnail}" alt="表紙">`:''}<br><a href="${book.infoLink}" target="_blank">📖 詳しく読む</a></div>`;
+    document.getElementById('omikuji-card').innerHTML=html;
+}

@@ -130,5 +130,22 @@ button[data-filter="all"]{background:#264653;color:#fff;}
 .bookmark-card.surprise{background:#fff3e0;}
 .bookmark-card.sleepy{background:#f3e5f5;}
 
+.recommend-card{
+    background:#fffdf6;
+    border:1px solid #ccc;
+    border-radius:8px;
+    padding:1rem;
+    margin-top:1rem;
+}
+
+#mood-buttons button{
+    margin:0.2rem;
+    padding:0.4rem 0.8rem;
+    border-radius:6px;
+    border:1px solid #ccc;
+    cursor:pointer;
+}
+
+#roulette-status{ margin-top:0.5rem; }
 .nav{ display:flex; justify-content:space-around; padding:1rem 0; background:#fafafa; border-top:1px solid #ccc; position:fixed; bottom:50px; width:100%; }
 .nav a{text-decoration:none;color:#264653;font-weight:bold;}
